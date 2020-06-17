@@ -31,31 +31,8 @@ class GalleryImage extends Model
 
     }
 
-    public static function imagesGallery($fileName,$professionnel_id)
-    {
-        if(request()->hasFile($fileName)) {
-            foreach(request()->$fileName as $file){
-              $filename = rand().'.'.$file->getClientOriginalExtension();
-              $newsFile = new GalleryImage();
-              $newsFile->professionnel_id= $professionnel_id;
-              $newsFile->gallery_image = $filename;
-              if ($newsFile->save()) {
-                $file->move('image/galleries/', $filename);
-              }
-
-            }
-
-        }
-
-    }
-
     public function annonce()
     {
         return $this->belongsTo(Annonce::class);
-    }
-
-    public function professionnel()
-    {
-        return $this->belongsTo(Professionnel::class);
     }
 }

@@ -30,14 +30,6 @@
                 </div>
             </form>
         </div>
-        <div class="col-md-12"> 
-        @foreach($professionnel->gallery_images as $gallery_image)
-        <tr>
-        <a href=""><img src="{{ asset('image/galleries/'.$gallery_image->gallery_image )}}" width="150" height="150" alt=""></a>
-        </tr>
-       
-        @endforeach
-        </div>
     </div>
         <div class="col-md-12">
           <p>{{ $professionnel->content }}</p>

@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
-use App\Models\{GalleryImage, Professionnel, Category, User, Pro };
+use App\Models\{Professionnel, Category, User, Pro };
 
 class ProfessionnelsController extends Controller
 {
@@ -44,9 +44,8 @@ class ProfessionnelsController extends Controller
      */
     public function Pros(Professionnel $professionnel, $slug)
     {
-        $gallery_images = GalleryImage::all();
 
-        return view('site.professionnels.pros', compact('professionnel', 'gallery_images'));
+        return view('site.professionnels.pros', compact('professionnel'));
     }
  
     /**
@@ -60,9 +59,8 @@ class ProfessionnelsController extends Controller
    
     $categories = Category::all();
     $pros = Pro::all();
-    $gallery_images = GalleryImage::all();
 
-    return view('site.professionnels.create', compact('gallery_images','categories', 'pros'));
+    return view('site.professionnels.create', compact('categories', 'pros'));
 
     }
 
@@ -93,7 +91,6 @@ class ProfessionnelsController extends Controller
         $professionnel->user_id = Auth::id();
 
         if ($professionnel->save()) {
-            GalleryImage::imagesGallery('gallery_image', $professionnel->id);
             return redirect()->route('site.professionnels.index')->withSuccess('Votre annonce est ajouté avec succès dit boco');
         }
     }
@@ -108,9 +105,8 @@ class ProfessionnelsController extends Controller
     {
         $categories = Category::all();
         $pros = Pro::all();
-        $gallery_images = GalleryImage::all();
 
-        return view('site.professionnels.show', compact('categories', 'professionnel', 'pros', 'gallery_images'));
+        return view('site.professionnels.show', compact('categories', 'professionnel', 'pros'));
     }
 
     /**
@@ -157,11 +153,10 @@ class ProfessionnelsController extends Controller
      */
     public function destroy(Professionnel $professionnel)
     {
-        if ($professionnel->destroy(request()->id)) {
-
-            GalleryImage::where('professionnel_id',request()->id)->delete();
+        if ($professionnel->delete()) {
 
          return redirect()->route('site.professionnels.index')->withDanger('Votre annonce a été supprimée avec Succès ');
-         } //
     }
+
+  }
 }

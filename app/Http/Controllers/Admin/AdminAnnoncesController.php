@@ -162,12 +162,9 @@ class AdminAnnoncesController extends Controller
      */
     public function destroy(Annonce $annonce)
     {
-        if ($annonce->delete()) {
-
-            GalleryImage::where('annonce_id',request()->id)->delete();
-            
+        $annonce->delete();    
          return redirect()->route('admin.annonces.index')->withDanger('Votre annonce a été supprimée avec Succès ');
         //
-        }
+        
     }
 }

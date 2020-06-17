@@ -44,8 +44,6 @@ class UserProfilController extends Controller
      */
     public function create(Request $request)
    {
-
-   
     $categories = Category::all();
     $particuliers = Particulier::all();
     $gallery_images = GalleryImage::all();
@@ -146,10 +144,7 @@ class UserProfilController extends Controller
      */
     public function destroy(Annonce $annonce)
     {
-        if ($annonce->delete(request()->id)) {
-
-           $galleryimage = GalleryImage::with('annonce',$annonce->id)->delete();
-            
+        if ($annonce->delete()) {
             return redirect()->route('site.profils.index')->withDanger('Votre annonce a été supprimée avec Succès ');
         }
         //

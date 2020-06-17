@@ -60,12 +60,6 @@
             <input type="file" name="image">
 		   </div>
 
-         <div>
-            <label for="gallery_image">Gellery Image: </label><br>
-            <input type="file" name="gallery_image[]" multiple id="gallery_image">
-         </div>
-         
-
          <div><br>
          
          <button type="submit" class="btn btn-primary"> Ajouter un article</button>

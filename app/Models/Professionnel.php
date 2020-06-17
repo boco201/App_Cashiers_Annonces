@@ -16,11 +16,6 @@ class Professionnel extends Model
         'category_id', 'pro_id', 'user_id', 'title', 'content', 'image', 'price', 'premium',
     ];
 
-    public function gallery_images()
-    {
-        return $this->hasMany(GalleryImage::class);
-    }
-
     public function category()
     {
         return $this->belongsTo(Category::class);

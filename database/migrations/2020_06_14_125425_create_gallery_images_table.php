@@ -16,7 +16,6 @@ class CreateGalleryImagesTable extends Migration
         Schema::create('gallery_images', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('annonce_id')->unsigned();
-            $table->integer('professionnel_id')->unsigned();
             $table->string('gallery_image');
             $table->softDeletes();
             $table->timestamps();
