@@ -1,0 +1,42 @@
+$header-font: 'Oswald', Arial, Helvetica, sans-serif;
+
+h1, h2, h3, h4, h5, h6 { 
+  font-family: $header-font;
+  text-transform: uppercase;
+  font-style: italic;
+}
+
+.plan-price   {
+    font-family: $header-font;
+  }
+
+.subscription-option  {
+
+    input[type=radio]   {
+      display: none;
+    }
+  
+    label       {
+      display: block;
+      width: 100%;
+      min-height: 200px;
+      border-radius: 4px;
+      background: #F2F2F2;
+      color: #545454;
+      font-size: 40px;
+      text-align: center;
+      cursor: pointer;
+      padding-top: 50px;
+      transition: 0.3s ease all;
+    }
+  
+    .plan-name  {
+      display: block;
+      font-size: 24px;
+    }
+  
+    input[type=radio]:checked + label   {
+      background: #0B79EE;
+      color: #FFF;
+    }
+  }
